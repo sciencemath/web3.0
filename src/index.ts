@@ -52,7 +52,8 @@ const run = async () => {
   const button = document.createElement("button");
   button.innerText = "increment";
   button.onclick = async () => {
-    await counter.count();
+    const tx = await counter.count();
+    await tx.wait();
     setCounter();
   };
 
