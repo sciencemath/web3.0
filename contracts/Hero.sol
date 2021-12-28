@@ -20,31 +20,31 @@ contract Hero {
         return addressToHeroes[msg.sender];
     }
 
-    function getStrength(uint256 hero) public pure returns (uint256) {
-        return (hero >> 2) & 0x1F;
+    function getStrength(uint256 hero) public pure returns (uint32) {
+        return uint32((hero >> 2) & 0x1F);
     }
 
-    function getHealth(uint256 hero) public pure returns (uint256) {
-        return (hero >> 7) & 0x1F;
+    function getHealth(uint256 hero) public pure returns (uint32) {
+        return (uint32(hero >> 7) & 0x1F);
     }
 
-    function getDex(uint256 hero) public pure returns (uint256) {
-        return (hero >> 12) & 0x1F;
+    function getDex(uint256 hero) public pure returns (uint32) {
+        return uint32((hero >> 12) & 0x1F);
     }
 
-    function getIntellect(uint256 hero) public pure returns (uint256) {
-        return (hero >> 17) & 0x1F;
+    function getIntellect(uint256 hero) public pure returns (uint32) {
+        return uint32((hero >> 17) & 0x1F);
     }
 
-    function getMagic(uint256 hero) public pure returns (uint256) {
-        return (hero >> 22) & 0x1F;
+    function getMagic(uint256 hero) public pure returns (uint32) {
+        return uint32((hero >> 22) & 0x1F);
     }
 
     function createHero(Class class) public payable {
         require(msg.value >= 0.05 ether, "Please send more money");
 
         // stats are strength, health, dexerity, intellect, and magic
-        uint256[] stats = new uint256[](5);
+        uint256[] memory stats = new uint256[](5);
         stats[0] = 2;
         stats[1] = 7;
         stats[2] = 12;
